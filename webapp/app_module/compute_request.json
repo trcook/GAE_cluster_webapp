@@ -1,0 +1,77 @@
+
+{
+  "canIpForward": false,
+  "description": "A String",
+  "name": "instance-1",
+  "machineType": "zones/us-central1-f/machineTypes/n1-highcpu-2",
+
+
+
+  "disks": [
+    {
+    "type": "PERSISTENT",
+      "boot": true,
+      "mode": "READ_WRITE",
+      "autoDelete": true,
+      "deviceName": "instance-1",
+      "initializeParams": {
+        "sourceImage": "projects/project/global/images/rstudio-server-deb",
+        "diskSizeGb": "30"
+        }
+      }
+      ],
+
+  "scheduling": {
+    "preemptible": true,
+    "onHostMaintenance": "TERMINATE",
+    "automaticRestart": false
+  },
+
+  "serviceAccounts": [
+    {
+      "email": "default",
+      "scopes": [
+        "https://www.googleapis.com/auth/cloud-platform",
+        "https://www.googleapis.com/auth/compute"
+      ]
+    }
+  ],
+
+  "networkInterfaces": [
+    {
+      "network": "global/networks/default",
+      "accessConfigs": [
+        {
+          "name": "External NAT",
+          "type": "ONE_TO_ONE_NAT"
+        }
+      ]
+    }
+  ],
+  "tags": {
+    "items": [
+      "loosey",
+      "http-server",
+      "https-server"
+    ]
+  },
+
+  "metadata": {
+      "items": [
+        {
+          "key": "PI",
+          "value": "Thomas Coook"
+        },
+        {
+          "key": "serverready",
+          "value": "False"
+        },
+        {
+          "key": "subproject",
+          "value": "webapp"
+      },
+      {"key":"startup-script-url",
+      "value":"gs://oef_research_compute/startup_scripts/debian_rstudio_config.sh"}
+              ]
+    }
+}

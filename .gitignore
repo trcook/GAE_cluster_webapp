@@ -2,5 +2,8 @@ webapp/lib/*
 
 webapp/native_secret.json
 webapp/GeneralAdmin_Webapp_OAUTH.json
+webapp/app.yaml
+**.pyc
 webapp/*.ipynb
 webapp/**.ipynb**
+webapp/static
