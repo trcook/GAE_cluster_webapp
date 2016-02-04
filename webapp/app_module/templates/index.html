@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+Welcome!
+{% endblock %}
+
+{% block body %}
+<h2>Welcome!</h2>
+    <p>You are a member of the following projects:</p>
+    <ul>
+    {% for i in session['projectlist'] %}
+    <li>{{ i['name'] }}</li>
+    {% endfor %}
+    </ul>
+    <p> Please select an option: </p>
+    <button  type="button" class="btn btn-primary"  onclick="location.href='compute_request'" >Compute Request</button>
+    <button  type="button" class="btn btn-primary"  onclick="location.href='compute_list'" >Compute List</button>
+        <button  type="button" class="btn btn-primary"  onclick="location.href='{{ url_for("project_select") }}'" >Select Active Project</button>
+{% endblock %}

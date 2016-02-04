@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block body %}
+  <h2>Choose a Project to Work On:</h2>
+  {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+  <form action="{{ url_for('project_select_pull_in') }}" method=post>
+    <dl>
+      <dt>
+      <dd><select name='project'>
+      {% for i in session['projectlist'] %}
+      <option value='{{ i["id"] }}'>{{ i["name"] }}</option>
+      {% endfor %}
+      </select>
+      <dt>&nbsp;</dt>
+      <dd><button class='btn btn-primary' name=submit type=submit value=submit >Set As Active Project</button>
+    </dl>
+  </form>
+{% endblock %}
+

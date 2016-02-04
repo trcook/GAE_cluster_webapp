@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+
+{% macro select_box(name, listo='projectlist', val='',label='') -%}
+    <dd><select name={{ name }}>
+        {% for i in session[listo] %}
+            {% if i[label]=='rstudio-serer-deb' %}
+                <option value='{{ i[val] }}'>Rstudio Server</option>
+            {% else %}
+                <option value='{{ i[val] }}'>{{ i[label] }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+    </dd>
+{%- endmacro %}
+
+<div class="col-sm-6">
+<form action="{{ url_for('compute_req_pull_in') }}" method=post>
+    <dl>
+      <dt> MachineType:
+      <dd><select name='machineType'>
+      {% for i in g.computers %}
+      <option value='{{ i["name"] }}'>{{ i['name'] }}: {{ i["cpus"] }} CPUs, {{ i['mem_gb'] }} Gb Ram</option>
+      {% endfor %}
+      </select>
+    <dt>Server Image:
+        {{ select_box('disk_image',listo='imageslist',val='selfLink',label='name') }}
+      <dt>Name:
+        <dd>
+          <input type="text" class="form-control" name="inst_name" value={{ g.inst_name }}>
+      <dt>&nbsp;</dt>
+        <dd><button class='btn btn-primary' name=submit type=submit value=submit >Make Request</button>
+    </dl>
+</form>
+</div>
+{% endblock %}
+
+

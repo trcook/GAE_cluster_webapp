@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<table class="table table-striped table-hover">
+    <thead class="thead-inverse">
+    <tr>
+        <th>Instance Name</th>
+
+        <th>Status</th>
+        <th>Link/Location</th>
+        <th>Launch Time</th>
+        <th>Project</th>
+                <th>Machine Type</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for inst in g.instances %}
+        <tr>
+        <td>{{ inst['name'] }}</td>
+
+            {% if not inst['server_up']=='True' %}
+                        <td>Working...</td>
+            <td>Wait for server</td>
+            {% else %}
+          <td>Ready!</td>
+        <td><a href={{ 'http://'+inst['ipaddress']+':8787' }}>Go To Rstudio</a></td>
+            {% endif %}
+        <td> {{ inst['start_time'] }}</td>
+        <td>{{ session['admin_project'] }}{# Project #}</td>
+                <td>{{ inst['MachineType_short'] }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+
+{% endblock %}
