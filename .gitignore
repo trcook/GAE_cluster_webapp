@@ -7,3 +7,4 @@ webapp/app.yaml
 webapp/*.ipynb
 webapp/**.ipynb**
 webapp/static
+banner-generator.py
