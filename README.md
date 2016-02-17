@@ -7,10 +7,10 @@ This project is a side-product of the [rdocker_hpc](https://github.com/trcook/rd
 
 # Key technologies/Files:
 
-    * Flask as the driver for the webapp
-    * Custom Rstudio server images (see the 'debian_rstudio_server_config.sh'.
-    you can use this to setup a debian (Jesse))
-        * Rstudio server is the accesspiont for end-users to run their analyses in R. The setup here is just as ammenible to setting up a Ipython notebook server for end-users to access and run python scripts.
+ * Flask as the driver for the webapp
+ * Custom Rstudio server images (see the 'debian_rstudio_server_config.sh'.
+ you can use this to setup a debian (Jesse))
+     * Rstudio server is the accesspiont for end-users to run their analyses in R. The setup here is just as ammenible to setting up a Ipython notebook server for end-users to access and run python scripts.
 
         
 # THIS IS NOT READY FOR DEPLOYMENT. 
